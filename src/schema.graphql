@@ -2,11 +2,11 @@ type Query {
     info: String!
     publishedPost: [Post!]!
     post(id: ID!): Post
-    portByUser(userId: ID!): [Post!]!
+    postByUser(userId: ID!): [Post!]!
 }
 
 type Mutation {
-    createUser(name: String!, email: String!, password: String!): User
+    signUp(name: String!, email: String!, password: String!): User
     createDraft(title: String!, userId: ID!): Post
     publish(postId: ID!): Post
 }

@@ -1,4 +1,16 @@
 type User {
   id: ID! @id
+  email: String @unique
   name: String!
+  password: String!
+  createdAt: DateTime! @createdAt
+  posts: [Post!]!
+}
+
+type Post {
+    id: ID! @id
+    title: String!
+    published: Boolean! @default(value: false)
+    createdAt: DateTime! @createdAt
+    author: User
 }
