@@ -1,8 +1,7 @@
 type Query {
-    info: String!
     publishedPost: [Post!]!
     post(id: ID!): Post
-    postByUser(userId: ID!): [Post!]!
+    postsByUser(userId: ID!): [Post!]!
 }
 
 type Mutation {
@@ -15,7 +14,7 @@ type User {
     id: ID!
     email: String
     name: String
-    post: [Post!]!
+    posts: [Post!]!
 }
 
 type Post {
