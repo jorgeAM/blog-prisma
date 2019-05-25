@@ -9,6 +9,7 @@ type Mutation {
     login(email: String!, password: String!): AuthPayload
     createDraft(title: String!): Post
     publish(postId: ID!): Post
+    deletePost(postId: ID!): Post
 }
 
 type User {

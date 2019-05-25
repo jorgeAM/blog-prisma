@@ -35,9 +35,15 @@ const publish = (_, args, ctx) => {
     })
 }
 
+const deletePost = (_, args, ctx) => {
+    const userId = getUserId(ctx)
+    return ctx.prisma.deletePost({ id: args.postId })
+}
+
 module.exports = {
     signUp,
     login,
     createDraft,
     publish,
+    deletePost,
 }
