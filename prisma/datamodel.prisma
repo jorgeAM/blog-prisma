@@ -5,6 +5,7 @@ type User {
   password: String!
   createdAt: DateTime! @createdAt
   posts: [Post!]!
+  comments: [Comment!]!
 }
 
 type Post {
@@ -13,4 +14,13 @@ type Post {
     published: Boolean! @default(value: false)
     createdAt: DateTime! @createdAt
     author: User
+    comments: [Comment!]!
+}
+
+type Comment {
+    id: ID! @id
+    body: String!
+    createdAt: DateTime! @createdAt
+    post: Post!
+    writtenBy: User!
 }
