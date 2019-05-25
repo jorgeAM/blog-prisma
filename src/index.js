@@ -15,9 +15,12 @@ const resolvers = {
 const server = new GraphQLServer({
     typeDefs: './src/schema.graphql',
     resolvers,
-    context: {
-        prisma,
-    },
+    context: req => {
+        return {
+            ...req,
+            prisma,
+        }
+    }
 })
 
 server.start(() => console.log(`server is running on http://localhost:4000 🚀`))
