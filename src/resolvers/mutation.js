@@ -17,11 +17,12 @@ const login = async (_, args, ctx) => {
 }
 
 const createDraft = (_, args, ctx) => {
+    const userId = getUserId(ctx)
     return ctx.prisma.createPost({
         title: args.title,
         author: {
             connect: {
-                id: args.userId
+                id: userId
             }
         },
     })
