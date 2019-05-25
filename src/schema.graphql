@@ -10,13 +10,17 @@ type Mutation {
     createDraft(title: String!): Post
     publish(postId: ID!): Post
     deletePost(postId: ID!): Post
+    addComment(body: String!, postId: ID!): Comment
 }
+
+scalar DateTime
 
 type User {
     id: ID!
     email: String
     name: String
     posts: [Post!]!
+    comments: [Comment!]!
 }
 
 type AuthPayload {
@@ -29,4 +33,13 @@ type Post {
     title: String!
     published: Boolean!
     author: User
+    comments: [Comment!]!
+}
+
+type Comment {
+    id: ID!
+    body: String!
+    post: Post!
+    writtenBy: User!
+    createdAt: DateTime
 }

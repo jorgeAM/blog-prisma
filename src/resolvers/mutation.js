@@ -40,10 +40,20 @@ const deletePost = (_, args, ctx) => {
     return ctx.prisma.deletePost({ id: args.postId })
 }
 
+const addComment = async (_, args, ctx) => {
+    const userId = getUserId(ctx)
+    return await ctx.prisma.createComment({
+        body: args.body,
+        writtenBy:{ connect: { id: userId }},
+        post: { connect: { id: args.postId }}
+    })
+}
+
 module.exports = {
     signUp,
     login,
     createDraft,
     publish,
     deletePost,
+    addComment
 }
