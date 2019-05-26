@@ -1,6 +1,6 @@
 type Query {
     publishedPost: [Post!]!
-    post(id: ID!): Post
+    post(postId: ID!): Post
     postsByUser(userId: ID!): [Post!]!
 }
 

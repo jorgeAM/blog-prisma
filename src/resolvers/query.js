@@ -1,6 +1,6 @@
 const publishedPost = (_, args, ctx) => ctx.prisma.posts({ where: { published: true } })
 
-const post = (_, args, ctx) => ctx.prisma.post({ id: args.id })
+const post = (_, args, ctx) => ctx.prisma.post({ id: args.postId })
 
 const postsByUser = (_, args, ctx) => {
     return ctx.prisma.posts({ where: { author: { id: args.userId } }})

@@ -5,6 +5,7 @@ const Mutation = require('./resolvers/mutation')
 const User = require('./resolvers/user')
 const Post = require('./resolvers/post')
 const Comment = require('./resolvers/comment')
+const { permissions } = require('./permissions/permissions')
 
 const resolvers = {
     Query, 
@@ -17,6 +18,7 @@ const resolvers = {
 const server = new GraphQLServer({
     typeDefs: './src/schema.graphql',
     resolvers,
+    middlewares: [permissions],
     context: req => {
         return {
             ...req,
